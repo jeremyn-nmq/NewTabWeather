@@ -1,0 +1,11 @@
+{
+  "name": "chrome-new-tab-weather",
+  "version": "1.0.1",
+  "description": "Design update",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "JeremyN",
+  "license": "ISC"
+}
