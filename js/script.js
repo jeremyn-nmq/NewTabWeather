@@ -24,6 +24,10 @@ switch (today.getDay()) {
     weekDay = 'Samstag';
     break;
 }
+var hour = today.getHours();
+var mins = ('0' + today.getMinutes()).slice(-2);
+var time = hour + ':' + mins;
+
 var date =
   weekDay +
   String.fromCharCode(160) +
@@ -33,14 +37,14 @@ var date =
   '-' +
   (today.getMonth() + 1) +
   '-' +
-  today.getFullYear();
-var hour = today.getHours();
-var mins = ('0' + today.getMinutes()).slice(-2);
-var time = hour + ':' + mins;
+  today.getFullYear() +
+  String.fromCharCode(160) +
+  String.fromCharCode(160) +
+  String.fromCharCode(160) +
+  time;
 
 // Fill current date time
 $('.date').text(date);
-$('.time').text(time);
 
 // set bg color and sun's position depend on time
 var bgColor = 'linear-gradient(-225deg, #B7F8DB 0%, #50A7C2 100%)';
