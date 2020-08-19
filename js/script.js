@@ -1,5 +1,23 @@
 // get date
 var today = new Date();
+var hour = today.getHours();
+function startTime() {
+  var today = new Date();
+  var h = today.getHours();
+  var m = today.getMinutes();
+  var s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  $('.time').html(h + ':' + m + ':' + s);
+  var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+  if (i < 10) {
+    i = '0' + i;
+  } // add zero in front of numbers < 10
+  return i;
+}
+document.addEventListener('DOMContentLoaded', startTime());
 var weekDay = '';
 switch (today.getDay()) {
   case 0:
@@ -24,9 +42,6 @@ switch (today.getDay()) {
     weekDay = 'Samstag';
     break;
 }
-var hour = today.getHours();
-var mins = ('0' + today.getMinutes()).slice(-2);
-var time = hour + ':' + mins;
 
 var date =
   weekDay +
@@ -37,13 +52,9 @@ var date =
   '-' +
   (today.getMonth() + 1) +
   '-' +
-  today.getFullYear() +
-  String.fromCharCode(160) +
-  String.fromCharCode(160) +
-  String.fromCharCode(160) +
-  time;
+  today.getFullYear();
 
-// Fill current date time
+// Fill current date
 $('.date').text(date);
 
 // set bg color and sun's position depend on time
@@ -205,7 +216,7 @@ $(document).ready(function () {
     dataType: 'json',
     data: {},
     url:
-      'https://api.openweathermap.org/data/2.5/weather?id=country-id&appid=your-api-key&units=metric&lang=de',
+      'https://api.openweathermap.org/data/2.5/weather?id=city-id&appid=app-id&units=metric&lang=de',
     success: function (data) {
       weather.date = moment.unix(data.dt).format('MM/DD/YYYY');
       weather.time = moment.unix(data.dt).format('HH:MM');
